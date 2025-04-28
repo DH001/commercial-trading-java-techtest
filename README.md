@@ -1,5 +1,6 @@
 # Anagram Finder
-A simple command line utility for finding anagrams in a specified file
+A simple command line utility for finding anagrams in a specified file.
+Based on requirements in file: CTE1-Anagram exercise-230425-092613.pdf (using Java 17+).
 
 ## Software required to run this
 * Java 17
@@ -31,3 +32,10 @@ With more time, other implementations could be developed and added to the strate
 
 A separate service class was used to that the application logic can be kept separate from the Spring Framework code.
 The Word Fetcher and Anagram strategy are separate classes as they can easily be changed for better implementations in the future without changing the rest of the application. 
+
+
+
+## Future enhancements
+With more time available I would have investigated some alternative strategies for calculating the anagrams. 
+I would also have refactored the output logic (writing comma-separated lines to standard output) to a separate writer class so it could 
+be easily substituted for an alternative (e.g. write to file, json format) without impacting other classes.
