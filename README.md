@@ -33,6 +33,9 @@ With more time, other implementations could be developed and added to the strate
 A separate service class was used to that the application logic can be kept separate from the Spring Framework code.
 The Word Fetcher and Anagram strategy are separate classes as they can easily be changed for better implementations in the future without changing the rest of the application. 
 
+The anagram strategy uses a Set so that duplicates are not passed. The Client can choose whether to use a sorted or unsorted set if they care about consistent order of results.
+The anagram strategy returns a lst of lists so that the order of results is consistent for testing. This can then be output in any way client class wants. 
+
 ### Complexity 
 The implemented sort algorithm should have a time complexity of O(n log (n)) based on the sort of the character array (as per JavaDoc for Arrays.sort()). This will be multiplied by the number of words 
 that are processed: O(noWords * n log (n)) for whole file. Space complexity would be the number of words held in memory (i.e. max number of words on the same length in input file) based on the WordFetcher implementation. 
