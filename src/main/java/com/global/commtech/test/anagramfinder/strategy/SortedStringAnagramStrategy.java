@@ -1,5 +1,7 @@
 package com.global.commtech.test.anagramfinder.strategy;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
@@ -12,9 +14,6 @@ import org.springframework.util.MultiValueMap;
  */
 @Component
 public class SortedStringAnagramStrategy implements AnagramStrategy {
-    private static final String WORD_DELIM = ",";
-
-    private final String newline = System.lineSeparator();
 
     /**
      * For given set of words it will find and group the anagrams on separate comma separated lines
@@ -23,18 +22,15 @@ public class SortedStringAnagramStrategy implements AnagramStrategy {
      * @return A string of comma separated anagrams with each new group of anagrams on a newline or empty string if no words passed in
      */
     @Override
-    public String findAnagrams(Set<String> words) {
+    public List<List<String>> findAnagrams(Set<String> words) {
         if (words==null || words.isEmpty()) {
-            return "";
+            return Collections.emptyList();
         }
         MultiValueMap<String, String> anagrams = new LinkedMultiValueMap<>();
 
         words.forEach(word -> anagrams.add(sortString(word), word));
 
-        return anagrams.values().stream()
-                .map(l -> String.join(WORD_DELIM, l))
-                .sorted()
-                .collect(Collectors.joining(newline));
+        return anagrams.values().stream().toList();
     }
 
     private String sortString(String input) {

@@ -1,5 +1,6 @@
 package com.global.commtech.test.anagramfinder.strategy;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -10,7 +11,7 @@ public interface AnagramStrategy {
      * For given set of words it will find and group the anagrams on separate comma separated lines
      *
      * @param words Set of words of the same length
-     * @return A string of comma separated anagrams with each new group of anagrams on a newline
+     * @return A list of groups containing words that are anagrams of each other.
      */
-    String findAnagrams(Set<String> words);
+    List<List<String>> findAnagrams(Set<String> words);
 }
