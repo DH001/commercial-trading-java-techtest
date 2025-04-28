@@ -33,7 +33,9 @@ With more time, other implementations could be developed and added to the strate
 A separate service class was used to that the application logic can be kept separate from the Spring Framework code.
 The Word Fetcher and Anagram strategy are separate classes as they can easily be changed for better implementations in the future without changing the rest of the application. 
 
-
+### Complexity 
+The implemented sort algorithm should have a time complexity of O(n log (n)) based on the sort of the character array (as per JavaDoc for Arrays.sort()). This will be multiplied by the number of words 
+that are processed: O(noWords * n log (n)) for whole file. Space complexity would be the number of words held in memory (i.e. max number of words on the same length in input file) based on the WordFetcher implementation. 
 
 ## Future enhancements
 With more time available I would have investigated some alternative strategies for calculating the anagrams. 
