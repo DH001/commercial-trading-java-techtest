@@ -1,5 +1,7 @@
 package com.global.commtech.test.anagramfinder.strategy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -29,16 +31,13 @@ public class SortedStringAnagramStrategy implements AnagramStrategy {
 
         words.forEach(word -> anagrams.add(sortString(word), word));
 
-        return anagrams.values().stream().toList();
+        return new ArrayList<>(anagrams.values());
     }
 
     private String sortString(String input) {
-        return input.chars()
-                .sorted()
-                .collect(StringBuilder::new,
-                        StringBuilder::appendCodePoint,
-                        StringBuilder::append)
-                .toString();
+        char[] characters = input.toCharArray();
+        Arrays.sort(characters);
+        return new String(characters);
     }
 
 }
