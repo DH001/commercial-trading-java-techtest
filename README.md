@@ -30,17 +30,18 @@ A word with no anagrams will appear in a line by itself. Output is written to st
 A single simple implementation has been provided (SortedStringAnagramStrategy) that sorts each word to test for anagrams.
 With more time, other implementations could be developed and added to the strategy package.
 
-A separate service class was used to that the application logic can be kept separate from the Spring Framework code.
-The Word Fetcher and Anagram strategy are separate classes as they can easily be changed for better implementations in the future without changing the rest of the application. 
+A separate 'service' class was used to that the application logic can be kept separate from the Spring Framework code in the Application class.
+The WordFetcher and AnagramStrategy are separate classes so they can easily be changed for different implementations without changing the rest of the application. 
 
-The anagram strategy uses a Set so that duplicates are not passed. The Client can choose whether to use a sorted or unsorted set if they care about consistent order of results.
-The anagram strategy returns a lst of lists so that the order of results is consistent for testing. This can then be output in any way client class wants. 
+The AnagramStrategy uses a Set so that there are no duplicates. The Client can choose whether to use a sorted or unsorted set if they care about consistent order of results.
+The AnagramStrategy returns a list of lists so that the order of results is consistent for testing. This can then be output in any way client class wants. 
 
 ### Complexity 
-The implemented sort algorithm should have a time complexity of O(n log (n)) based on the sort of the character array (as per JavaDoc for Arrays.sort()). This will be multiplied by the number of words 
-that are processed: O(noWords * n log (n)) for whole file. Space complexity would be the number of words held in memory (i.e. max number of words on the same length in input file) based on the WordFetcher implementation. 
+The implemented sort algorithm should have a time complexity of O(n log (n)) based on the sort of the character array (as per JavaDoc for Arrays.sort()).
+Space complexity would be the number of words held in memory (i.e. max number of words on the same length in input file) based on the WordFetcher implementation. 
 
 ## Future enhancements
 With more time available I would have investigated some alternative strategies for calculating the anagrams. 
 I would also have refactored the output logic (writing comma-separated lines to standard output) to a separate writer class so it could 
 be easily substituted for an alternative (e.g. write to file, json format) without impacting other classes.
+I would also have tested with other UTF-8 characters and ensured they are supported.
